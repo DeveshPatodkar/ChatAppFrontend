@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, Button,useToast } from '@chakra-ui/react'
+import { FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, Button, useToast } from '@chakra-ui/react'
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -14,9 +14,9 @@ const Login = () => {
     const handleClick = () => setShow(!show);
 
 
-    const submitHandler = async() => {
+    const submitHandler = async () => {
         setLoading(true);
-        console.log({email,password})
+        console.log({ email, password })
         if (!email || !password) {
             toast({
                 title: "Please Fill all the Fields",
@@ -63,59 +63,62 @@ const Login = () => {
             });
             setLoading(false);
         }
-     }
-  return (
-      <VStack spacing='5px' color='black'>
-         
-          <FormControl id='email' isRequired>
-              <FormLabel> Email </FormLabel>
-              <Input
-                  value = {email}
-                  placeholder='Enter Your Email'
-                  onChange={(e) => setEmail(e.target.value)} />
-          </FormControl>
-         
-         
-         
-          <FormControl id='password' isRequired>
-              <FormLabel> Password </FormLabel>
-              <InputGroup>
-                  <Input
-                      value = {password}
-                      type={show ? 'text' : 'password'}
-                      placeholder='Enter Password'
-                      onChange={(e) => setPassword(e.target.value)} />
-                  <InputRightElement width="4.5rem">
-                      <Button h="1.75rem" size="sm" onClick={handleClick}>
-                          {show ? "Hide" : "Show"}
-                      </Button>
-                  </InputRightElement>
-              </InputGroup>
-          </FormControl>
-          
+    }
+    return (
+        <VStack spacing='5px' color='black'>
 
-          <Button
-              colorScheme='blue'
-              width='100%'
-              style={{ marginTop: 15 }}
-              onClick={submitHandler}
-              isLoading= {loading}
-          >
-              Login
-          </Button>
-          <Button
-              variant="solid"
-              colorScheme="red"
-              width="100%"
-              onClick={() => {
-                  setEmail("guest@example.com");
-                  setPassword("123456");
-              }}
-          >
-              Get Guest User Credentials
-          </Button>
-      </VStack >
-  )
+            <FormControl id='email' isRequired>
+                <FormLabel color={'white'}> Email </FormLabel>
+                <Input
+                    color={'white'}
+
+                    value={email}
+                    placeholder='Enter Your Email'
+                    onChange={(e) => setEmail(e.target.value)} />
+            </FormControl>
+
+
+
+            <FormControl id='password' isRequired>
+                <FormLabel color={'white'}> Password </FormLabel>
+                <InputGroup>
+                    <Input
+                        color={'white'}
+                        value={password}
+                        type={show ? 'text' : 'password'}
+                        placeholder='Enter Password'
+                        onChange={(e) => setPassword(e.target.value)} />
+                    <InputRightElement width="4.5rem">
+                        <Button h="1.75rem" size="sm" onClick={handleClick}>
+                            {show ? "Hide" : "Show"}
+                        </Button>
+                    </InputRightElement>
+                </InputGroup>
+            </FormControl>
+
+
+            <Button
+                colorScheme='green'
+                width='100%'
+                style={{ marginTop: 15 }}
+                onClick={submitHandler}
+                isLoading={loading}
+            >
+                Login
+            </Button>
+            <Button
+                variant="solid"
+                colorScheme="red"
+                width="100%"
+                onClick={() => {
+                    setEmail("guest@example.com");
+                    setPassword("123456");
+                }}
+            >
+                Get Guest User Credentials
+            </Button>
+        </VStack >
+    )
 }
 
 export default Login

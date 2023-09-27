@@ -1,6 +1,6 @@
 import { Avatar, Box, Button, Input, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Spinner, Text, Tooltip, useDisclosure, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react'
-import { BellIcon, ChevronDownIcon } from '@chakra-ui/icons'
+import { BellIcon, ChevronDownIcon, SearchIcon } from '@chakra-ui/icons'
 import { ChatState } from '../../Context/chatProvider';
 import ProfileModal from './ProfileModal';
 import { useHistory } from 'react-router-dom';
@@ -118,27 +118,35 @@ const SideDrawer = ({ fetcher, fetchy }) => {
                 justifyContent="space-between"
                 alignItems="center"
                 bg="white"
+                bg="#0d1b2a"
                 w="100%"
                 p="5px 10px 5px 10px"
-                borderWidth="5px"
+                borderWidth="1px"
+                borderRadius={'10px'}
+                borderColor={'grey'}
             >
-                <Tooltip label="Search Users to Chat" hasArrow placement='bottom-end'>
-                    <Button variant='ghost' onClick={onOpen}>
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                        <Text d={{ base: "none", md: "flex" }} px={4} as='b'>
-                            Search Users
+                <Tooltip label="Search Users to Chat" hasArrow placement='bottom-end' >
+                    <Button variant='ghost' onClick={onOpen} >
+                        {/* <Button onClick={onOpen} bg='#272729'> */}
+                        {/* <i className="fa-solid fa-magnifying-glass"></i>
+                         */}
+                        <SearchIcon color={'white'} />
+                        {/* <Text d={{ base: "none", md: "flex" }} px={4} as='b' color={'white'}> */}
+                        <Text d={{ base: "none", md: "flex" }} px={4} as='b' color={'white'}>
+                            Add new Users!
                         </Text>
                     </Button>
                 </Tooltip>
 
-                <Text fontSize="2xl" fontFamily="Work sans" as='b'>
+                <Text fontSize="2xl" fontFamily="Work sans" as='b' color={'white'}>
+                    {/* <Text fontSize="2xl" fontFamily="Work sans" as='b' color={'white'}> */}
                     Talk-A-Tive
                 </Text>
                 <div>
                     <Menu>
                         <MenuButton p={1}>
                             <NotificationBadge count={notification.length} effect={Effect.SCALE} />
-                            <BellIcon fontSize='2xl' m={1} />
+                            <BellIcon fontSize='2xl' m={1} color={'white'} />
                         </MenuButton>
                         <MenuList pl={2}>
                             {!notification.length && "No new messages"}
@@ -189,6 +197,7 @@ const SideDrawer = ({ fetcher, fetchy }) => {
                             <ChatLoading />
                         ) : (
                             searchResult?.map(user => (
+
                                 <UserListItem
                                     key={user._id}
                                     user={user}

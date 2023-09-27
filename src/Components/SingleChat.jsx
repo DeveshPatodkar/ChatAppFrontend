@@ -75,8 +75,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }
 
 
+
     const sendMessage = async (event) => {
-        console.log(newMessage);
 
         if (event.key === 'Enter' && newMessage) {
             socket.emit('stop typing', selectedChat._id);
@@ -88,25 +88,35 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     },
                 };
                 setNewMessage("");
+                const toAi = (selectedChat.users[0].email === "ai@devesh.com") || (selectedChat.users[1].email === "ai@devesh.com");
+
                 const { data } = await axios.post(
                     "/api/message",
                     {
-                        link: newMessage,
                         content: newMessage,
+                        toAi,
                         chatId: selectedChat._id,
                     },
                     config
                 );
 
-                socket.emit("new message", data);
+                console.log(data)
 
-                setMessages([...messages, data]);
+                socket.emit("new message", data.userMessage);
+
+                // setMessages([...messages, data]);
+                setMessages((mesg) => [...mesg, data.userMessage])
+                if (toAi) {
+                    setMessages((mesg) => [...mesg, data.aiMessage])
+                }
 
 
             } catch (error) {
+                console.log(error)
+                console.log("fdsf")
                 toast({
                     title: "Error Occured!",
-                    description: "Failed to send the Message",
+                    description: error.message,
                     status: "error",
                     duration: 5000,
                     isClosable: true,
@@ -117,6 +127,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }
 
     const handleVideoCall = async () => {
+
         try {
             const config = {
                 headers: {
@@ -124,32 +135,36 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.post(
+            const videoResData = await axios.post(
                 "/api/videoChat"
             );
 
+            // const Link = {
+            //     key: "Enter"
+            // } 
 
-            console.log(data.data.room_url);
-            const Link = {
-                key: "Enter"
-            } 
+            // sendMessage(Link)
+            setNewMessage("");
+            const { data } = await axios.post(
+                "/api/message",
+                {
+                    content: "",
+                    link: videoResData.data.data.room_url,
+                    chatId: selectedChat._id,
+                },
+                config
+            );
+            console.log(data);
 
-            sendMessage(Link)
-            //  data  = await axios.post(
-            //     "/api/message",
-            //     {
-            //         content: newMessage,
-            //         chatId: selectedChat._id,
-            //     },
-            //     config
-            // );
-            // setNewMessage("");
-            // setMessages([...messages, data]);
+
+
+            setMessages([...messages, data.userMessage]);
 
 
 
 
         } catch (error) {
+            console.log(error)
             toast({
                 title: "Error Occured!",
                 description: "Failed to send the Message",
@@ -247,8 +262,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         />
                         {!selectedChat.isGroupChat ? (
                             <>
-                                {getSender(user, selectedChat.users)}
-                                <Box display={'flex'} flexDir='row' gap={5}>
+                                <Text color={'white'} as='b'>
+
+                                    {getSender(user, selectedChat.users)}
+                                </Text>
+                                <Box display={'flex'} flexDir='row' gap={5} >
                                     <IconButton
                                         display='flex'
                                         icon={<VideoCallIcon />}
@@ -260,6 +278,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             </>
                         ) : (
                             <>
+
                                 {selectedChat.chatName}
                                 <UpdateGroupChatModal
                                     fetchAgain={fetchAgain}

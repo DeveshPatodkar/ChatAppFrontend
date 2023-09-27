@@ -8,6 +8,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import ChatLoading from './ChatLoading';
 import { getSender, getSenderFull } from '../config/ChatLogics';
 import GroupChatModal from './Miscellaneous/GroupChatModal';
+import ScrollableFeed from 'react-scrollable-feed';
 
 const MyChats = ({ fetchAgain, setFetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
@@ -43,7 +44,7 @@ const MyChats = ({ fetchAgain, setFetchAgain }) => {
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  },[fetchAgain])
+  }, [fetchAgain])
 
 
 
@@ -56,7 +57,10 @@ const MyChats = ({ fetchAgain, setFetchAgain }) => {
       bg={'white'}
       w={{ base: '100%', md: '40%' }}
       borderRadius='lg'
-      borderWidth={'1px'}
+      borderWidth={'3px'}
+      backgroundColor={'#0d1b2a'}
+      borderColor='grey'
+
     >
       <Box
         pb={3}
@@ -66,9 +70,10 @@ const MyChats = ({ fetchAgain, setFetchAgain }) => {
         w='100%'
         justifyContent={'space-between'}
         alignItems='center'
+
       >
 
-        <Text as='b'>
+        <Text as='b' color={'white'} p='2'>
           Chats
         </Text>
         <GroupChatModal>
@@ -78,8 +83,8 @@ const MyChats = ({ fetchAgain, setFetchAgain }) => {
             rightIcon={<AddIcon />}
             colorScheme='teal'
             bg={'#38B2AC'}
-            
-            
+
+
           >
 
             New Group Chat
@@ -87,82 +92,88 @@ const MyChats = ({ fetchAgain, setFetchAgain }) => {
           </Button>
         </GroupChatModal>
       </Box>
-
       <Box
         d="flex"
         flexDir="column"
         p={3}
-        bg="#F8F8F8"
         w="100%"
         h="100%"
         borderRadius="lg"
         overflowY="hidden"
+        backgroundColor={'#0d1b2a'}
+
       >
-        {chats ? (
-          <Stack overflowY={'scroll'}>
-            {chats.map((chat) => {
-              return (
-                < Box
-                  onClick={() => setSelectedChat(chat)}
-                  cursor="pointer"
-                  bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
-                  color={selectedChat === chat ? "white" : "black"}
-                  px={3}
-                  py={2}
-                  borderRadius="lg"
-                  key={chat._id}
-                >
+        <ScrollableFeed>
+
+          {chats ? (
+            <Stack overflowY={'scroll'}>
+              {chats.map((chat) => {
+                return (
+                  < Box
+                    onClick={() => setSelectedChat(chat)}
+                    cursor="pointer"
+                    bg={selectedChat === chat ? "#38B2AC" : "#33415c"}
+                    color={selectedChat === chat ? "white" : "black"}
+                    px={3}
+                    py={2}
+                    borderRadius="lg"
+                    key={chat._id}
+                  >
 
 
 
-                  {!chat.isGroupChat ? (
-                    <>
-                      <Stack direction='row'>
-                        <Avatar size='md' cursor='pointer' name={getSenderFull(user, chat.users).name} src={getSenderFull(user, chat.users).pic} />
-                        <Stack direction='column'>
-                          <Text fontSize={'xl'} as='b' >
-                            {getSender(user, chat.users)}
-                          </Text>
-                          <Text fontWeight={'light'} fontFamily='Work sans'>
-                            {chat.latestMessage ? chat.latestMessage.content : ""}
-                          </Text>
+                    {!chat.isGroupChat ? (
+                      <>
+                        <Stack direction='row'>
+                          <Avatar size='md' cursor='pointer' name={getSenderFull(user, chat.users).name} src={getSenderFull(user, chat.users).pic} />
+                          <Stack direction='column'>
+                            <Text fontSize={'xl'} as='b' color={'white'}>
+                              {getSender(user, chat.users)}
+                            </Text>
+                            <Text fontWeight={'light'} fontFamily='Work sans' color={'#e8e8e8'}>
+                              {chat.latestMessage ? chat.latestMessage.content : ""}
+                            </Text>
+                          </Stack>
                         </Stack>
-                      </Stack>
-                    </>
-                  ) : (
-                    <>
-                      <Stack direction='row'>
-                        <Avatar size='md' cursor='pointer' name={getSenderFull(user, chat.users).name} src={"https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"} />
-                        <Stack direction='column' spacing={0.5}>
+                      </>
+                    ) : (
+                      <>
+                        <Stack direction='row'>
+                          <Avatar size='md' cursor='pointer' name={getSenderFull(user, chat.users).name} src={"https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"} />
+                          <Stack direction='column' spacing={0.5}>
 
-                          <Text fontSize={'xl'} fontWeight={'bold'}   >
-                            {chat.chatName}
-                          </Text>
+                            <Text fontSize={'xl'} fontWeight={'bold'} color='white'  >
+                              {chat.chatName}
+                            </Text>
 
-                          {chat.latestMessage ? (
-                            <>
-                              <Text fontWeight={'light'} fontFamily='Work sans'>
-                                {chat.latestMessage.sender.name}: {chat.latestMessage.content}
-                              </Text>
-                            </>
-                          ) : ""}
+                            {chat.latestMessage ? (
+                              <>
+                                <Text fontWeight={'light'} fontFamily='Work sans' color={'#e8e8e8'}>
+                                  {chat.latestMessage.sender.name}: {chat.latestMessage.content}
+                                </Text>
+                              </>
+                            ) : ""}
+
+                          </Stack>
 
                         </Stack>
-
-                      </Stack>
-                    </>
-                  )}
+                      </>
+                    )}
 
 
 
-                </Box>
-              )
-            })}
-          </Stack>
-        ) : (
-          <ChatLoading />
-        )}
+                  </Box>
+                )
+              })}
+
+            </Stack>
+          ) : (
+            <ChatLoading />
+          )}
+        </ScrollableFeed >
+
       </Box>
+
     </Box >
   )
 }

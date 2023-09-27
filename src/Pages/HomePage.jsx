@@ -1,12 +1,14 @@
 import {
     Box,
+    Center,
     Container,
     Tab,
     TabList,
     TabPanel,
     TabPanels,
     Tabs,
-    Text, } from '@chakra-ui/react'
+    Text,
+} from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import Login from '../Components/Authentication/Login'
 import SignUp from '../Components/Authentication/SignUp'
@@ -24,7 +26,8 @@ const HomePage = () => {
     }, [history])
 
     return (
-        <Container maxW='xl' centerContent>
+
+        <Container maxW='xl' centerContent  >
             <Box
                 d="flex"
                 textAlign='center'
@@ -34,23 +37,26 @@ const HomePage = () => {
                 m="40px 0 15px 0"
                 borderRadius="lg"
                 borderWidth="1px"
+                backgroundColor={'#343a40'}
+                borderColor='grey'
             >
-                <Text fontSize="4xl" fontFamily="Work sans" as='b'>
-                    Talk-A-Tive
+                <Text fontSize="4xl" fontFamily="Work sans" as='b' color={'white'}>
+                    Welcome to Talk-A-Tive!
                 </Text>
             </Box>
-            <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px" color="black">
+            <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px" color="white" backgroundColor={'#343a40'} borderColor='grey'
+            >
                 <Tabs variant='soft-rounded' >
                     <TabList mb='1em'>
-                        <Tab width='50%'>Login</Tab>
-                        <Tab width='50%'>Sign Up</Tab>
+                        <Tab width='50%' color={'white'}>Sign Up</Tab>
+                        <Tab width='50%' color={'white'}> Login</Tab>
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                           <Login/>
+                            <SignUp />
                         </TabPanel>
                         <TabPanel>
-                            <SignUp/>
+                            <Login />
                         </TabPanel>
                     </TabPanels>
                 </Tabs>

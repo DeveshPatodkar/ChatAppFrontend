@@ -16,7 +16,7 @@ const SignUp = () => {
     const history = useHistory();
 
     const handleClick = () => setShow(!show);
-    const submitHandler = async () => { 
+    const submitHandler = async () => {
         setLoading(true);
         if (!name || !email || !password || !confirmpassword) {
             toast({
@@ -177,7 +177,7 @@ const SignUp = () => {
                 />
             </FormControl>
             <Button
-                colorScheme="blue"
+                colorScheme="green"
                 width="100%"
                 style={{ marginTop: 15 }}
                 onClick={submitHandler}
