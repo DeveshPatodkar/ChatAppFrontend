@@ -1,6 +1,6 @@
-# Talk-a-Tive
+# Convo-Fi
 
-Talk-a-Tive is a real time chatting app, with video calling and AI chatbot features
+Convo-Fi is a real time chatting app, with video calling and AI chatbot features
 
 ## Submitted By
 
@@ -47,13 +47,13 @@ The backend for the app is deployed at [https://chat-app-mern-phi.vercel.app/](h
 
 A new user can sign up for a new account to begin chatting. The screen for the same is as follows:
 
-![Sign Up Screen](https://drive.google.com/uc?id=1QGjKySKWsrsrJErSgg1IuAwsHR5DaRL4)
+![Sign Up Screen](https://drive.google.com/uc?id=1i126kbHfwlGwLBI23X4OtkdS99UH6lmc)
 
 ### Log in
 
 Existing users can log in as follows:
 
-![Log In Screen](https://drive.google.com/uc?id=1WR1QPhl8EHDbdAXCSVT4fMbBySEtna4Y)
+![Log In Screen](https://drive.google.com/uc?id=1H3lMG5ROMIKHyIKsDe1SeH1lpe0OweQG)
 
 Apart from exisiting users, users wishing to test this app as guest can also do so by clicking on **Get Guest User Credentials**.
 
@@ -63,7 +63,7 @@ Apart from exisiting users, users wishing to test this app as guest can also do 
 
 Search for new users using their Email ID and add them to start chatting.
 
-![Add User](https://drive.google.com/uc?id=1uGclYEvDXvOVaoJRTsRE2AxF3uvcwFbu)
+![Add User](https://drive.google.com/uc?id=1UolPKFogr7ZiRDmnFEEcF91lSP_8cR5f)
 
 The search bar can be used to search as follows. Clicking on the user allows you to add them and start chatting.
 
@@ -71,7 +71,7 @@ The search bar can be used to search as follows. Clicking on the user allows you
 
 ### Chat Interface
 
-![Chat Interface](https://drive.google.com/uc?id=10w2ReWI4KeU3L4gSFlkULPWJEcrgBT8N)
+![Chat Interface](https://drive.google.com/uc?id=1Ovx-4m_DgCL2TMZ7w7lAz_WBUVnafoun)
 
 Enter your message in the message input box and press Enter to send the message.
 
@@ -86,7 +86,7 @@ Voila! Your new group is ready for chatting.
 ## AI Chat Bot
 You can access the AI chat bot by either clicking on the **AI Bot** user in your chats or by clicking the icon button on bottom left corner.
 
-![AI Chat](https://drive.google.com/uc?id=1NL-tBaQyOkmEKaRyZm4dFA52VO1hLKBI)
+![AI Chat](https://drive.google.com/uc?id=1xvt7coCfz1jCx1oRV26Bm8mgCPbZG80k)
 
 Click this icon on bottom left to open AI Bot (after adding it using add new user).
 
@@ -104,7 +104,7 @@ To initiate a video call, navigate to the contact and click on the **New Video C
 
 This will send a video call link to the contact. Click on join and join the video call using that link.
 
-![VC](https://drive.google.com/uc?id=1iNV_XuuYeMeifJBex_5NNki4lLWa77uL)
+![VC](https://drive.google.com/uc?id=1ZiHIgpVwH_uTTubZ6sK7PbR7h8P9jlGH)
 
 ### CAUTION
 
