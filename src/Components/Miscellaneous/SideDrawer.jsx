@@ -13,7 +13,7 @@ import {
     DrawerContent,
     DrawerCloseButton,
 } from '@chakra-ui/react'
-import axios from 'axios';
+import axios from '../../utils/axios';
 import ChatLoading from '../ChatLoading';
 import UserListItem from '../UserAvatar/UserListItem';
 import { getSender } from '../../config/ChatLogics';
@@ -117,7 +117,6 @@ const SideDrawer = ({ fetcher, fetchy }) => {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                bg="white"
                 bg="#0d1b2a"
                 w="100%"
                 p="5px 10px 5px 10px"

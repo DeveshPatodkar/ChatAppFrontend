@@ -1,6 +1,6 @@
 import { ViewIcon } from '@chakra-ui/icons'
 import { Box, Button, FormControl, IconButton, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, useDisclosure, useToast } from '@chakra-ui/react'
-import axios from 'axios'
+import axios from '../../utils/axios'
 import React from 'react'
 import { useState } from 'react'
 import { ChatState } from '../../Context/chatProvider'
@@ -121,7 +121,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
             setLoading(false);
         }
         setGroupChatName("");
-    };    
+    };
 
 
 

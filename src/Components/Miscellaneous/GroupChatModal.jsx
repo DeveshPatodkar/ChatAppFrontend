@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, useDisclosure, useToast } from '@chakra-ui/react'
-import axios from 'axios';
+import axios from '../../utils/axios';
 import React from 'react'
 import { useState } from 'react';
 import { ChatState } from '../../Context/chatProvider';
@@ -47,7 +47,7 @@ const GroupChatModal = ({ children }) => {
 
         }
     }
-    const handleSubmit = async () => { 
+    const handleSubmit = async () => {
         if (!groupChatName || !selectedUsers) {
             toast(
                 {
@@ -70,7 +70,7 @@ const GroupChatModal = ({ children }) => {
                 name: groupChatName,
                 users: JSON.stringify(selectedUsers.map((u) => u._id)),
             }, config)
-            
+
             setChats([data, ...chats]);
             onClose();
             toast(
@@ -95,7 +95,7 @@ const GroupChatModal = ({ children }) => {
     }
 
 
-    const handleDelete = (userToDelete) => { 
+    const handleDelete = (userToDelete) => {
         setSelectedUsers(selectedUsers.filter((sel) => sel._id !== userToDelete._id))
     }
 

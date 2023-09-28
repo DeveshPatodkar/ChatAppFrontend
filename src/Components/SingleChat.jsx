@@ -1,6 +1,6 @@
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { Box, FormControl, IconButton, Input, Spinner, Text, useToast } from '@chakra-ui/react';
-import axios from 'axios';
+import axios from '../utils/axios';
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
