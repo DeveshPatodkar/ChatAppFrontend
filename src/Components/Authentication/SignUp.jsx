@@ -2,6 +2,7 @@ import { FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, B
 import React, { useState } from 'react';
 import axios from "../../utils/axios";
 import { useHistory } from "react-router-dom";
+import { ChatState } from '../../Context/chatProvider';
 const SignUp = () => {
 
 
@@ -14,6 +15,7 @@ const SignUp = () => {
     const [loading, setLoading] = useState(false);
     const toast = useToast();
     const history = useHistory();
+    // const { chats, user, setChats } = ChatState()
 
     const handleClick = () => setShow(!show);
     const submitHandler = async () => {
@@ -59,9 +61,12 @@ const SignUp = () => {
                 position: "bottom"
             });
 
+
             localStorage.setItem('userInfo', JSON.stringify(data));
             setLoading(false);
             history.push('/chats')
+            window.location.reload();
+
         } catch (error) {
             toast({
                 title: "Error Occured!",

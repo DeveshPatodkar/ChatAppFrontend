@@ -155,9 +155,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 },
                 config
             );
-            console.log(data);
 
 
+            socket.emit("new message", data.userMessage);
 
             setMessages([...messages, data.userMessage]);
 
@@ -279,13 +279,22 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             </>
                         ) : (
                             <>
+                                <Text color={'white'} as='b'>
 
-                                {selectedChat.chatName}
-                                <UpdateGroupChatModal
-                                    fetchAgain={fetchAgain}
-                                    setFetchAgain={setFetchAgain}
-                                    fetchMessages={fetchMessages}
-                                />
+                                    {selectedChat.chatName}
+                                </Text>
+                                <Box display={'flex'} flexDir='row' gap={5}>
+                                    <IconButton
+                                        display='flex'
+                                        icon={<VideoCallIcon />}
+                                        onClick={() => handleVideoCall()}
+                                    />
+                                    <UpdateGroupChatModal
+                                        fetchAgain={fetchAgain}
+                                        setFetchAgain={setFetchAgain}
+                                        fetchMessages={fetchMessages}
+                                    />
+                                </Box>
                             </>
                         )}
                     </Box>
@@ -295,7 +304,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         flexDir="column"
                         justifyContent="flex-end"
                         p={3}
-                        bg="#E8E8E8"
+                        bg="#33415c"
                         w="100%"
                         h="100%"
                         borderRadius="lg"
@@ -344,7 +353,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 </>
             ) : (
                 <Box display={'flex'} alignItems='center' justifyContent={'center'} h='100%'>
-                    <Text fontSize="3xl" pb={3} fontFamily="Work sans" as='b'>
+                    <Text fontSize="3xl" pb={3} fontFamily="Work sans" as='b' color={'white'}>
                         Click on a user to start chatting :)
                     </Text>
                 </Box>

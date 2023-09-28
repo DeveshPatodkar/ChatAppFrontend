@@ -1,5 +1,5 @@
 import { ViewIcon } from '@chakra-ui/icons'
-import { Box, Button, FormControl, IconButton, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, useDisclosure, useToast } from '@chakra-ui/react'
+import { Box, Button, FormControl, IconButton, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import axios from '../../utils/axios'
 import React from 'react'
 import { useState } from 'react'
@@ -196,16 +196,19 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
             <IconButton display={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
             <Modal isOpen={isOpen} onClose={onClose} isCentered>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent bg={'#33415c'}>
                     <ModalHeader
                         fontSize="35px"
                         fontFamily="Work sans"
                         display="flex"
                         justifyContent="center"
+                        color={'white'}
+                        as={'b'}
                     >{selectedChat.chatName}</ModalHeader>
                     <ModalCloseButton />
-                    <ModalBody>
+                    <ModalBody >
                         <Box w="100%" display="flex" flexWrap="wrap" pb={3} >
+
                             {selectedChat.users.map((u) => (
                                 <UserBadgeItem
                                     key={u._id}
@@ -260,7 +263,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                         </Button>
                     </ModalFooter>
                 </ModalContent>
-            </Modal>
+            </Modal >
         </>
     )
 }

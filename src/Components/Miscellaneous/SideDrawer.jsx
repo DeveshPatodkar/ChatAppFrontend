@@ -19,7 +19,6 @@ import UserListItem from '../UserAvatar/UserListItem';
 import { getSender } from '../../config/ChatLogics';
 import NotificationBadge from 'react-notification-badge';
 import { Effect } from 'react-notification-badge';
-
 const SideDrawer = ({ fetcher, fetchy }) => {
 
     const [search, setSearch] = useState("");
@@ -87,6 +86,7 @@ const SideDrawer = ({ fetcher, fetchy }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
+            console.log(typeof (userId))
             const { data } = await axios.post(`/api/chat`, { userId }, config);
             if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
             setSelectedChat(data);
@@ -139,7 +139,7 @@ const SideDrawer = ({ fetcher, fetchy }) => {
 
                 <Text fontSize="2xl" fontFamily="Work sans" as='b' color={'white'}>
                     {/* <Text fontSize="2xl" fontFamily="Work sans" as='b' color={'white'}> */}
-                    Talk-A-Tive
+                    Convo-Fi
                 </Text>
                 <div>
                     <Menu>

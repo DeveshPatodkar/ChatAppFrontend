@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, Button, useToast } from '@chakra-ui/react'
 import axios from "../../utils/axios";
 import { useHistory } from "react-router-dom";
+import { ChatState } from '../../Context/chatProvider';
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -48,8 +49,10 @@ const Login = () => {
                 position: "bottom"
             });
 
+
             localStorage.setItem("userInfo", JSON.stringify(data));
             setLoading(false);
+
             history.push("/chats");
             window.location.reload();
         } catch (error) {
@@ -111,7 +114,7 @@ const Login = () => {
                 colorScheme="red"
                 width="100%"
                 onClick={() => {
-                    setEmail("guest@example.com");
+                    setEmail("guestuser@example.com");
                     setPassword("123456");
                 }}
             >

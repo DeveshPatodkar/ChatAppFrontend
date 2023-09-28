@@ -41,7 +41,7 @@ const HomePage = () => {
                 borderColor='grey'
             >
                 <Text fontSize="4xl" fontFamily="Work sans" as='b' color={'white'}>
-                    Welcome to Talk-A-Tive!
+                    Welcome to Convo-Fi!
                 </Text>
             </Box>
             <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px" color="white" backgroundColor={'#343a40'} borderColor='grey'
