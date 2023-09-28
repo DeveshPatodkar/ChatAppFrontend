@@ -16,7 +16,7 @@ import animationData from '../animations/typing.json';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 
 
-const ENDPOINT = "https://chatappbackend-kihr.onrender.com"
+const ENDPOINT = "https://chatappmern-production.up.railway.app"
 // 'http://localhost:5000';
 
 var socket, selectedChatCompare;
